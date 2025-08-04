@@ -1,4 +1,4 @@
-# CDR Pipeline with Terraform & Airflow
+# CDR Transaction Pipeline with Terraform & Airflow
 
 This project provisions a scalable end-to-end data pipeline for telecom data and synthetic user profiles using AWS services, Terraform, and Apache Airflow.
 
@@ -58,10 +58,6 @@ Schedule: `@daily`
 - Credentials and parameters are pulled securely from Airflow Variables and SSM Parameter Store
 - Airbyte performs ELT from RDS to Redshift
 
-```python
-Random User Flow:
-fetch_from_randomuser >> load_to_rds >> airbyte_sync_to_redshift
-```
 
 ---
 
@@ -144,26 +140,12 @@ airflow dags trigger randomuser_pipeline
 
 ---
 
-## Outputs (Optional)
-
-```hcl
-output "redshift_endpoint" {
-  value = aws_redshift_cluster.new_cluster.endpoint
-}
-```
-
----
-
 ## Cleanup
 
 ```bash
 terraform destroy
 ```
 
-> Warning: This will destroy all provisioned resources including RDS and Redshift.
-
-
----
 
 ## Author
 
