@@ -1,0 +1,63 @@
+[2025-08-02T01:06:54.665+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-01T00:45:00+00:00/task_id=load_to_redshift permission to 509
+[2025-08-02T01:06:54.715+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-01T00:45:00+00:00/task_id=load_to_redshift permission to 509
+[2025-08-02T01:06:54.760+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_redshift scheduled__2025-08-01T00:45:00+00:00 [queued]>
+[2025-08-02T01:06:54.777+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_redshift scheduled__2025-08-01T00:45:00+00:00 [queued]>
+[2025-08-02T01:06:54.778+0000] {taskinstance.py:2170} INFO - Starting attempt 8 of 8
+[2025-08-02T01:06:54.802+0000] {taskinstance.py:2191} INFO - Executing <Task(S3ToRedshiftOperator): load_to_redshift> on 2025-08-01 00:45:00+00:00
+[2025-08-02T01:06:54.814+0000] {standard_task_runner.py:60} INFO - Started process 921 to run task
+[2025-08-02T01:06:54.830+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'load_to_redshift', 'scheduled__2025-08-01T00:45:00+00:00', '--job-id', '81', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpqlykdxq4']
+[2025-08-02T01:06:54.833+0000] {standard_task_runner.py:88} INFO - Job 81: Subtask load_to_redshift
+[2025-08-02T01:06:54.914+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-01T00:45:00+00:00/task_id=load_to_redshift permission to 509
+[2025-08-02T01:06:54.928+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.load_to_redshift scheduled__2025-08-01T00:45:00+00:00 [running]> on host f2527419f673
+[2025-08-02T01:06:55.077+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='load_to_redshift' AIRFLOW_CTX_EXECUTION_DATE='2025-08-01T00:45:00+00:00' AIRFLOW_CTX_TRY_NUMBER='8' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-01T00:45:00+00:00'
+[2025-08-02T01:06:55.093+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-02T01:06:55.104+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-02T01:06:55.106+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') credentials retrieved from login and password.
+[2025-08-02T01:06:55.131+0000] {s3_to_redshift.py:192} INFO - Executing COPY command...
+[2025-08-02T01:06:55.143+0000] {base.py:83} INFO - Using connection ID 'redshift_default' for task execution.
+[2025-08-02T01:06:55.145+0000] {warnings.py:109} WARNING - <string>:9: UserWarning: AWS Connection (conn_id='redshift_default', conn_type='redshift') expected connection type 'aws', got 'redshift'. This connection might not work correctly. Please use Amazon Web Services Connection type.
+
+[2025-08-02T01:06:55.146+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='redshift_default', conn_type='redshift') credentials retrieved from login and password.
+[2025-08-02T01:06:55.147+0000] {warnings.py:109} WARNING - <string>:9: AirflowProviderDeprecationWarning: Host tf-redshift-cluster.ci896s3qzt6h.eu-west-1.redshift.amazonaws.com:5439/dev_db specified in the connection is not used. Please, set it on extra['endpoint_url'] instead
+
+[2025-08-02T01:06:56.083+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/transfers/s3_to_redshift.py", line 194, in execute
+    redshift_hook.execute_query(sql=sql, **self.redshift_data_api_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/redshift_data.py", line 99, in execute_query
+    resp = self.conn.execute_statement(**trim_none_values(kwargs))
+  File "/usr/local/lib/python3.8/functools.py", line 967, in __get__
+    val = self.func(instance)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/base_aws.py", line 704, in conn
+    return self.get_client_type(region_name=self.region_name)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/base_aws.py", line 674, in get_client_type
+    return session.client(
+  File "/home/airflow/.local/lib/python3.8/site-packages/boto3/session.py", line 299, in client
+    return self._session.create_client(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/session.py", line 997, in create_client
+    client = client_creator.create_client(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 161, in create_client
+    client_args = self._get_client_args(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 508, in _get_client_args
+    return args_creator.get_client_args(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/args.py", line 100, in get_client_args
+    final_args = self.compute_client_args(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/args.py", line 219, in compute_client_args
+    endpoint_config = self._compute_endpoint_config(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/args.py", line 369, in _compute_endpoint_config
+    return self._resolve_endpoint(**resolve_endpoint_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/args.py", line 474, in _resolve_endpoint
+    return endpoint_bridge.resolve(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 613, in resolve
+    resolved = self.endpoint_resolver.construct_endpoint(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/regions.py", line 229, in construct_endpoint
+    result = self._endpoint_for_partition(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/regions.py", line 277, in _endpoint_for_partition
+    raise NoRegionError()
+botocore.exceptions.NoRegionError: You must specify a region.
+[2025-08-02T01:06:56.094+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=cdr_pipeline, task_id=load_to_redshift, execution_date=20250801T004500, start_date=20250802T010654, end_date=20250802T010656
+[2025-08-02T01:06:56.112+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 81 for task load_to_redshift (You must specify a region.; 921)
+[2025-08-02T01:06:56.173+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-08-02T01:06:56.200+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

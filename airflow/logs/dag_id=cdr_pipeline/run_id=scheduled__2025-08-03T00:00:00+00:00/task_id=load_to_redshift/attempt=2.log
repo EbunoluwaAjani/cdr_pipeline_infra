@@ -1,0 +1,72 @@
+[2025-08-04T13:21:52.181+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=load_to_redshift permission to 509
+[2025-08-04T13:21:52.263+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=load_to_redshift permission to 509
+[2025-08-04T13:21:52.331+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_redshift scheduled__2025-08-03T00:00:00+00:00 [queued]>
+[2025-08-04T13:21:52.361+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_redshift scheduled__2025-08-03T00:00:00+00:00 [queued]>
+[2025-08-04T13:21:52.363+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-08-04T13:21:52.390+0000] {taskinstance.py:2191} INFO - Executing <Task(S3ToRedshiftOperator): load_to_redshift> on 2025-08-03 00:00:00+00:00
+[2025-08-04T13:21:52.403+0000] {standard_task_runner.py:60} INFO - Started process 175 to run task
+[2025-08-04T13:21:52.416+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'load_to_redshift', 'scheduled__2025-08-03T00:00:00+00:00', '--job-id', '195', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpwa8u7ulu']
+[2025-08-04T13:21:52.419+0000] {standard_task_runner.py:88} INFO - Job 195: Subtask load_to_redshift
+[2025-08-04T13:21:52.595+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=load_to_redshift permission to 509
+[2025-08-04T13:21:52.618+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.load_to_redshift scheduled__2025-08-03T00:00:00+00:00 [running]> on host dbc46d35c6dd
+[2025-08-04T13:21:52.838+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='load_to_redshift' AIRFLOW_CTX_EXECUTION_DATE='2025-08-03T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-03T00:00:00+00:00'
+[2025-08-04T13:21:52.866+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-04T13:21:52.886+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-04T13:21:52.887+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') credentials retrieved from login and password.
+[2025-08-04T13:21:52.920+0000] {s3_to_redshift.py:192} INFO - Executing COPY command...
+[2025-08-04T13:21:52.935+0000] {base.py:83} INFO - Using connection ID 'redshift_default' for task execution.
+[2025-08-04T13:21:52.939+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='redshift_default', conn_type='aws') credentials retrieved from login and password.
+[2025-08-04T13:21:52.941+0000] {warnings.py:109} WARNING - <string>:9: AirflowProviderDeprecationWarning: Host tf-redshift-cluster.ci896s3qzt6h.eu-west-1.redshift.amazonaws.com:5439/dev_db specified in the connection is not used. Please, set it on extra['endpoint_url'] instead
+
+[2025-08-04T13:21:56.377+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/transfers/s3_to_redshift.py", line 194, in execute
+    redshift_hook.execute_query(sql=sql, **self.redshift_data_api_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/redshift_data.py", line 99, in execute_query
+    resp = self.conn.execute_statement(**trim_none_values(kwargs))
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 553, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 1009, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.ValidationException: An error occurred (ValidationException) when calling the ExecuteStatement operation: Redshift endpoint is not available.
+[2025-08-04T13:21:56.396+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=cdr_pipeline, task_id=load_to_redshift, execution_date=20250803T000000, start_date=20250804T132152, end_date=20250804T132156
+[2025-08-04T13:21:56.437+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 195 for task load_to_redshift (An error occurred (ValidationException) when calling the ExecuteStatement operation: Redshift endpoint is not available.; 175)
+[2025-08-04T13:21:56.506+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-08-04T13:21:56.565+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-04T14:54:02.590+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=load_to_redshift permission to 509
+[2025-08-04T14:54:02.931+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=load_to_redshift permission to 509
+[2025-08-04T14:54:03.113+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_redshift scheduled__2025-08-03T00:00:00+00:00 [queued]>
+[2025-08-04T14:54:03.173+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_redshift scheduled__2025-08-03T00:00:00+00:00 [queued]>
+[2025-08-04T14:54:03.176+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-08-04T14:54:03.305+0000] {taskinstance.py:2191} INFO - Executing <Task(S3ToRedshiftOperator): load_to_redshift> on 2025-08-03 00:00:00+00:00
+[2025-08-04T14:54:03.384+0000] {standard_task_runner.py:60} INFO - Started process 864 to run task
+[2025-08-04T14:54:03.435+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'load_to_redshift', 'scheduled__2025-08-03T00:00:00+00:00', '--job-id', '67', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpm6_np03q']
+[2025-08-04T14:54:03.456+0000] {standard_task_runner.py:88} INFO - Job 67: Subtask load_to_redshift
+[2025-08-04T14:54:03.922+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=load_to_redshift permission to 509
+[2025-08-04T14:54:04.002+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.load_to_redshift scheduled__2025-08-03T00:00:00+00:00 [running]> on host 9edf237adf6e
+[2025-08-04T14:54:04.941+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='load_to_redshift' AIRFLOW_CTX_EXECUTION_DATE='2025-08-03T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-03T00:00:00+00:00'
+[2025-08-04T14:54:05.065+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-04T14:54:05.093+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-04T14:54:05.095+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') credentials retrieved from login and password.
+[2025-08-04T14:54:05.318+0000] {s3_to_redshift.py:192} INFO - Executing COPY command...
+[2025-08-04T14:54:05.379+0000] {base.py:83} INFO - Using connection ID 'redshift_default' for task execution.
+[2025-08-04T14:54:05.388+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='redshift_default', conn_type='aws') credentials retrieved from login and password.
+[2025-08-04T14:54:16.056+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/transfers/s3_to_redshift.py", line 194, in execute
+    redshift_hook.execute_query(sql=sql, **self.redshift_data_api_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/redshift_data.py", line 99, in execute_query
+    resp = self.conn.execute_statement(**trim_none_values(kwargs))
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 553, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 1009, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.ValidationException: An error occurred (ValidationException) when calling the ExecuteStatement operation: Redshift endpoint is not available.
+[2025-08-04T14:54:16.096+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=cdr_pipeline, task_id=load_to_redshift, execution_date=20250803T000000, start_date=20250804T145403, end_date=20250804T145416
+[2025-08-04T14:54:16.138+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 67 for task load_to_redshift (An error occurred (ValidationException) when calling the ExecuteStatement operation: Redshift endpoint is not available.; 864)
+[2025-08-04T14:54:16.291+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-08-04T14:54:16.471+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,98 @@
+[2025-08-02T01:48:29.963+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=manual__2025-08-02T01:20:57.581723+00:00/task_id=load_to_redshift permission to 509
+[2025-08-02T01:48:30.070+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=manual__2025-08-02T01:20:57.581723+00:00/task_id=load_to_redshift permission to 509
+[2025-08-02T01:48:30.158+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_redshift manual__2025-08-02T01:20:57.581723+00:00 [queued]>
+[2025-08-02T01:48:30.185+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_redshift manual__2025-08-02T01:20:57.581723+00:00 [queued]>
+[2025-08-02T01:48:30.186+0000] {taskinstance.py:2170} INFO - Starting attempt 8 of 9
+[2025-08-02T01:48:30.224+0000] {taskinstance.py:2191} INFO - Executing <Task(S3ToRedshiftOperator): load_to_redshift> on 2025-08-02 01:20:57.581723+00:00
+[2025-08-02T01:48:30.249+0000] {standard_task_runner.py:60} INFO - Started process 1522 to run task
+[2025-08-02T01:48:30.268+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'load_to_redshift', 'manual__2025-08-02T01:20:57.581723+00:00', '--job-id', '96', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpqtx2_63z']
+[2025-08-02T01:48:30.271+0000] {standard_task_runner.py:88} INFO - Job 96: Subtask load_to_redshift
+[2025-08-02T01:48:30.427+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=manual__2025-08-02T01:20:57.581723+00:00/task_id=load_to_redshift permission to 509
+[2025-08-02T01:48:30.451+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.load_to_redshift manual__2025-08-02T01:20:57.581723+00:00 [running]> on host f2527419f673
+[2025-08-02T01:48:30.755+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='load_to_redshift' AIRFLOW_CTX_EXECUTION_DATE='2025-08-02T01:20:57.581723+00:00' AIRFLOW_CTX_TRY_NUMBER='8' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-02T01:20:57.581723+00:00'
+[2025-08-02T01:48:30.780+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-02T01:48:30.802+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-02T01:48:30.804+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') credentials retrieved from login and password.
+[2025-08-02T01:48:30.856+0000] {s3_to_redshift.py:192} INFO - Executing COPY command...
+[2025-08-02T01:48:30.892+0000] {base.py:83} INFO - Using connection ID 'redshift_default' for task execution.
+[2025-08-02T01:48:30.897+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='redshift_default', conn_type='aws') credentials retrieved from login and password.
+[2025-08-02T01:48:30.902+0000] {warnings.py:109} WARNING - <string>:9: AirflowProviderDeprecationWarning: Host tf-redshift-cluster.ci896s3qzt6h.eu-west-1.redshift.amazonaws.com:5439/dev_db specified in the connection is not used. Please, set it on extra['endpoint_url'] instead
+
+[2025-08-02T01:48:33.290+0000] {redshift_data.py:113} INFO - Polling statement fe1c5dfa-d098-42cb-9a6e-f504d9b4eddb
+[2025-08-02T01:48:33.468+0000] {redshift_data.py:129} INFO - Query STARTED
+[2025-08-02T01:48:43.970+0000] {redshift_data.py:113} INFO - Polling statement fe1c5dfa-d098-42cb-9a6e-f504d9b4eddb
+[2025-08-02T01:48:44.299+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/transfers/s3_to_redshift.py", line 194, in execute
+    redshift_hook.execute_query(sql=sql, **self.redshift_data_api_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/redshift_data.py", line 107, in execute_query
+    self.wait_for_results(statement_id, poll_interval=poll_interval)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/redshift_data.py", line 124, in wait_for_results
+    raise ValueError(
+ValueError: Statement 'fe1c5dfa-d098-42cb-9a6e-f504d9b4eddb' terminated with status FAILED. Response details: {'ClusterIdentifier': 'tf-redshift-cluster',
+ 'CreatedAt': datetime.datetime(2025, 8, 2, 1, 48, 33, 562000, tzinfo=tzlocal()),
+ 'Database': 'dev_db',
+ 'DbUser': 'masterdb',
+ 'Duration': -1,
+ 'Error': 'ERROR: conflicting or redundant options',
+ 'HasResultSet': False,
+ 'Id': 'fe1c5dfa-d098-42cb-9a6e-f504d9b4eddb',
+ 'QueryString': '\n'
+                '                    COPY public.cdr_records \n'
+                '                    FROM '
+                "'s3://cdr-faker-data-dfad0cb7/cdr_2025-08-02.parquet'\n"
+                '                    credentials\n'
+                "                    ''\n"
+                '                    \n'
+                '                    FORMAT AS PARQUET\n'
+                "\t\t\tIAM_ROLE '';\n"
+                '        ',
+ 'RedshiftPid': 1073889565,
+ 'RedshiftQueryId': -1,
+ 'ResponseMetadata': {'HTTPHeaders': {'content-length': '679',
+                                      'content-type': 'application/x-amz-json-1.1',
+                                      'date': 'Sat, 02 Aug 2025 01:48:45 GMT',
+                                      'x-amzn-requestid': '9da0f5b5-8b5a-4b70-9b26-96cd74e4e005'},
+                      'HTTPStatusCode': 200,
+                      'RequestId': '9da0f5b5-8b5a-4b70-9b26-96cd74e4e005',
+                      'RetryAttempts': 0},
+ 'ResultRows': -1,
+ 'ResultSize': -1,
+ 'Status': 'FAILED',
+ 'UpdatedAt': datetime.datetime(2025, 8, 2, 1, 48, 33, 972000, tzinfo=tzlocal())}
+[2025-08-02T01:48:44.332+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=cdr_pipeline, task_id=load_to_redshift, execution_date=20250802T012057, start_date=20250802T014830, end_date=20250802T014844
+[2025-08-02T01:48:44.360+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 96 for task load_to_redshift (Statement 'fe1c5dfa-d098-42cb-9a6e-f504d9b4eddb' terminated with status FAILED. Response details: {'ClusterIdentifier': 'tf-redshift-cluster',
+ 'CreatedAt': datetime.datetime(2025, 8, 2, 1, 48, 33, 562000, tzinfo=tzlocal()),
+ 'Database': 'dev_db',
+ 'DbUser': 'masterdb',
+ 'Duration': -1,
+ 'Error': 'ERROR: conflicting or redundant options',
+ 'HasResultSet': False,
+ 'Id': 'fe1c5dfa-d098-42cb-9a6e-f504d9b4eddb',
+ 'QueryString': '\n'
+                '                    COPY public.cdr_records \n'
+                '                    FROM '
+                "'s3://cdr-faker-data-dfad0cb7/cdr_2025-08-02.parquet'\n"
+                '                    credentials\n'
+                "                    ''\n"
+                '                    \n'
+                '                    FORMAT AS PARQUET\n'
+                "\t\t\tIAM_ROLE '';\n"
+                '        ',
+ 'RedshiftPid': 1073889565,
+ 'RedshiftQueryId': -1,
+ 'ResponseMetadata': {'HTTPHeaders': {'content-length': '679',
+                                      'content-type': 'application/x-amz-json-1.1',
+                                      'date': 'Sat, 02 Aug 2025 01:48:45 GMT',
+                                      'x-amzn-requestid': '9da0f5b5-8b5a-4b70-9b26-96cd74e4e005'},
+                      'HTTPStatusCode': 200,
+                      'RequestId': '9da0f5b5-8b5a-4b70-9b26-96cd74e4e005',
+                      'RetryAttempts': 0},
+ 'ResultRows': -1,
+ 'ResultSize': -1,
+ 'Status': 'FAILED',
+ 'UpdatedAt': datetime.datetime(2025, 8, 2, 1, 48, 33, 972000, tzinfo=tzlocal())}; 1522)
+[2025-08-02T01:48:44.427+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-08-02T01:48:44.450+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

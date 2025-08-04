@@ -1,0 +1,48 @@
+[2025-08-04T13:16:25.063+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=get_s3_key permission to 509
+[2025-08-04T13:16:25.544+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=get_s3_key permission to 509
+[2025-08-04T13:16:25.740+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.get_s3_key scheduled__2025-08-03T00:00:00+00:00 [queued]>
+[2025-08-04T13:16:25.791+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.get_s3_key scheduled__2025-08-03T00:00:00+00:00 [queued]>
+[2025-08-04T13:16:25.799+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-08-04T13:16:26.045+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): get_s3_key> on 2025-08-03 00:00:00+00:00
+[2025-08-04T13:16:26.168+0000] {standard_task_runner.py:60} INFO - Started process 91 to run task
+[2025-08-04T13:16:26.196+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'get_s3_key', 'scheduled__2025-08-03T00:00:00+00:00', '--job-id', '192', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpo1mwm1da']
+[2025-08-04T13:16:26.205+0000] {standard_task_runner.py:88} INFO - Job 192: Subtask get_s3_key
+[2025-08-04T13:16:26.851+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=get_s3_key permission to 509
+[2025-08-04T13:16:27.080+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.get_s3_key scheduled__2025-08-03T00:00:00+00:00 [running]> on host dbc46d35c6dd
+[2025-08-04T13:16:27.972+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='get_s3_key' AIRFLOW_CTX_EXECUTION_DATE='2025-08-03T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-03T00:00:00+00:00'
+[2025-08-04T13:16:27.981+0000] {python.py:201} INFO - Done. Returned value was: cdr_2025-08-03.parquet/
+[2025-08-04T13:16:28.220+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=cdr_pipeline, task_id=get_s3_key, execution_date=20250803T000000, start_date=20250804T131625, end_date=20250804T131628
+[2025-08-04T13:16:28.380+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-08-04T13:16:28.503+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-04T14:47:46.948+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=get_s3_key permission to 509
+[2025-08-04T14:47:47.156+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=get_s3_key permission to 509
+[2025-08-04T14:47:47.591+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.get_s3_key scheduled__2025-08-03T00:00:00+00:00 [queued]>
+[2025-08-04T14:47:47.769+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.get_s3_key scheduled__2025-08-03T00:00:00+00:00 [queued]>
+[2025-08-04T14:47:47.778+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-08-04T14:47:48.264+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): get_s3_key> on 2025-08-03 00:00:00+00:00
+[2025-08-04T14:47:48.340+0000] {standard_task_runner.py:60} INFO - Started process 715 to run task
+[2025-08-04T14:47:48.405+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'get_s3_key', 'scheduled__2025-08-03T00:00:00+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpuc3fxhog']
+[2025-08-04T14:47:48.427+0000] {standard_task_runner.py:88} INFO - Job 38: Subtask get_s3_key
+[2025-08-04T14:47:49.503+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=get_s3_key permission to 509
+[2025-08-04T14:47:49.537+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.get_s3_key scheduled__2025-08-03T00:00:00+00:00 [running]> on host 9edf237adf6e
+[2025-08-04T14:47:51.413+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='get_s3_key' AIRFLOW_CTX_EXECUTION_DATE='2025-08-03T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-03T00:00:00+00:00'
+[2025-08-04T14:47:51.436+0000] {python.py:201} INFO - Done. Returned value was: cdr_2025-08-03.parquet/
+[2025-08-04T14:47:51.657+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=cdr_pipeline, task_id=get_s3_key, execution_date=20250803T000000, start_date=20250804T144747, end_date=20250804T144751
+[2025-08-04T14:47:52.043+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-08-04T14:47:52.764+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-04T16:30:05.565+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=get_s3_key permission to 509
+[2025-08-04T16:30:05.750+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=get_s3_key permission to 509
+[2025-08-04T16:30:06.165+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.get_s3_key scheduled__2025-08-03T00:00:00+00:00 [queued]>
+[2025-08-04T16:30:06.261+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.get_s3_key scheduled__2025-08-03T00:00:00+00:00 [queued]>
+[2025-08-04T16:30:06.266+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-08-04T16:30:06.414+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): get_s3_key> on 2025-08-03 00:00:00+00:00
+[2025-08-04T16:30:06.491+0000] {standard_task_runner.py:60} INFO - Started process 2205 to run task
+[2025-08-04T16:30:06.517+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'get_s3_key', 'scheduled__2025-08-03T00:00:00+00:00', '--job-id', '87', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmppxhdarc9']
+[2025-08-04T16:30:06.531+0000] {standard_task_runner.py:88} INFO - Job 87: Subtask get_s3_key
+[2025-08-04T16:30:06.972+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-03T00:00:00+00:00/task_id=get_s3_key permission to 509
+[2025-08-04T16:30:07.000+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.get_s3_key scheduled__2025-08-03T00:00:00+00:00 [running]> on host 9edf237adf6e
+[2025-08-04T16:30:07.503+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='get_s3_key' AIRFLOW_CTX_EXECUTION_DATE='2025-08-03T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-03T00:00:00+00:00'
+[2025-08-04T16:30:07.511+0000] {python.py:201} INFO - Done. Returned value was: cdr_2025-08-03.parquet/
+[2025-08-04T16:30:07.908+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=cdr_pipeline, task_id=get_s3_key, execution_date=20250803T000000, start_date=20250804T163006, end_date=20250804T163007
+[2025-08-04T16:30:08.178+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-08-04T16:30:08.352+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,77 @@
+[2025-08-02T02:25:58.298+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=manual__2025-08-02T02:25:50.430278+00:00/task_id=load_to_s3 permission to 509
+[2025-08-02T02:25:58.387+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=manual__2025-08-02T02:25:50.430278+00:00/task_id=load_to_s3 permission to 509
+[2025-08-02T02:25:58.470+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_s3 manual__2025-08-02T02:25:50.430278+00:00 [queued]>
+[2025-08-02T02:25:58.492+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_s3 manual__2025-08-02T02:25:50.430278+00:00 [queued]>
+[2025-08-02T02:25:58.493+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-08-02T02:25:58.526+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): load_to_s3> on 2025-08-02 02:25:50.430278+00:00
+[2025-08-02T02:25:58.539+0000] {standard_task_runner.py:60} INFO - Started process 2027 to run task
+[2025-08-02T02:25:58.555+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'load_to_s3', 'manual__2025-08-02T02:25:50.430278+00:00', '--job-id', '100', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpiernpdy1']
+[2025-08-02T02:25:58.557+0000] {standard_task_runner.py:88} INFO - Job 100: Subtask load_to_s3
+[2025-08-02T02:25:58.677+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=manual__2025-08-02T02:25:50.430278+00:00/task_id=load_to_s3 permission to 509
+[2025-08-02T02:25:58.724+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.load_to_s3 manual__2025-08-02T02:25:50.430278+00:00 [running]> on host f2527419f673
+[2025-08-02T02:25:59.126+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='load_to_s3' AIRFLOW_CTX_EXECUTION_DATE='2025-08-02T02:25:50.430278+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-02T02:25:50.430278+00:00'
+[2025-08-02T02:26:00.218+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/cdr.py", line 88, in load_to_s3
+    wr.s3.to_parquet(
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/_config.py", line 712, in wrapper
+    return function(**args)
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/_utils.py", line 179, in inner
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/s3/_write_parquet.py", line 723, in to_parquet
+    return strategy.write(
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/s3/_write.py", line 376, in write
+    paths, partitions_values = _to_dataset(
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/s3/_write_dataset.py", line 254, in _to_dataset
+    paths = func(
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/_distributed.py", line 105, in wrapper
+    return cls.dispatch_func(func)(*args, **kw)
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/s3/_write_parquet.py", line 219, in _to_parquet
+    writer.write_table(table, **write_table_args)
+  File "/usr/local/lib/python3.8/contextlib.py", line 120, in __exit__
+    next(self.gen)
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/s3/_write_parquet.py", line 101, in _new_writer
+    writer.close()
+  File "/usr/local/lib/python3.8/contextlib.py", line 120, in __exit__
+    next(self.gen)
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/s3/_fs.py", line 604, in open_s3_object
+    s3obj.close()
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/s3/_fs.py", line 488, in close
+    _utils.try_it(
+  File "/home/airflow/.local/lib/python3.8/site-packages/awswrangler/_utils.py", line 790, in try_it
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 553, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 989, in _make_api_call
+    http, parsed_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/client.py", line 1015, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 198, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/endpoint.py", line 134, in create_request
+    self._event_emitter.emit(
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/signers.py", line 105, in handler
+    return self.sign(operation_name, request)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/signers.py", line 195, in sign
+    auth.add_auth(request)
+  File "/home/airflow/.local/lib/python3.8/site-packages/botocore/auth.py", line 418, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+[2025-08-02T02:26:00.259+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=cdr_pipeline, task_id=load_to_s3, execution_date=20250802T022550, start_date=20250802T022558, end_date=20250802T022600
+[2025-08-02T02:26:00.290+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 100 for task load_to_s3 (Unable to locate credentials; 2027)
+[2025-08-02T02:26:00.367+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-08-02T02:26:00.471+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

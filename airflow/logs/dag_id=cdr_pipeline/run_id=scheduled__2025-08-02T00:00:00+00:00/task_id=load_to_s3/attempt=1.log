@@ -1,0 +1,52 @@
+[2025-08-04T13:16:09.778+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-02T00:00:00+00:00/task_id=load_to_s3 permission to 509
+[2025-08-04T13:16:10.132+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-02T00:00:00+00:00/task_id=load_to_s3 permission to 509
+[2025-08-04T13:16:10.293+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_s3 scheduled__2025-08-02T00:00:00+00:00 [queued]>
+[2025-08-04T13:16:10.335+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_s3 scheduled__2025-08-02T00:00:00+00:00 [queued]>
+[2025-08-04T13:16:10.343+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-08-04T13:16:10.398+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): load_to_s3> on 2025-08-02 00:00:00+00:00
+[2025-08-04T13:16:10.475+0000] {standard_task_runner.py:60} INFO - Started process 84 to run task
+[2025-08-04T13:16:10.545+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'load_to_s3', 'scheduled__2025-08-02T00:00:00+00:00', '--job-id', '189', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmp9znmmlgi']
+[2025-08-04T13:16:10.547+0000] {standard_task_runner.py:88} INFO - Job 189: Subtask load_to_s3
+[2025-08-04T13:16:10.871+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-02T00:00:00+00:00/task_id=load_to_s3 permission to 509
+[2025-08-04T13:16:10.909+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.load_to_s3 scheduled__2025-08-02T00:00:00+00:00 [running]> on host dbc46d35c6dd
+[2025-08-04T13:16:11.343+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='load_to_s3' AIRFLOW_CTX_EXECUTION_DATE='2025-08-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-02T00:00:00+00:00'
+[2025-08-04T13:16:14.094+0000] {cdr.py:155} INFO - Uploaded 100 records to s3://cdr-faker-data-dfad0cb7/cdr_2025-08-04.parquet/
+[2025-08-04T13:16:14.095+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-08-04T13:16:14.111+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=cdr_pipeline, task_id=load_to_s3, execution_date=20250802T000000, start_date=20250804T131610, end_date=20250804T131614
+[2025-08-04T13:16:14.194+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-08-04T13:16:14.238+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-04T14:47:04.478+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-02T00:00:00+00:00/task_id=load_to_s3 permission to 509
+[2025-08-04T14:47:04.700+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-02T00:00:00+00:00/task_id=load_to_s3 permission to 509
+[2025-08-04T14:47:04.988+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_s3 scheduled__2025-08-02T00:00:00+00:00 [queued]>
+[2025-08-04T14:47:05.130+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_s3 scheduled__2025-08-02T00:00:00+00:00 [queued]>
+[2025-08-04T14:47:05.133+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-08-04T14:47:05.950+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): load_to_s3> on 2025-08-02 00:00:00+00:00
+[2025-08-04T14:47:06.124+0000] {standard_task_runner.py:60} INFO - Started process 653 to run task
+[2025-08-04T14:47:06.233+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'load_to_s3', 'scheduled__2025-08-02T00:00:00+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpbgq644w5']
+[2025-08-04T14:47:06.350+0000] {standard_task_runner.py:88} INFO - Job 26: Subtask load_to_s3
+[2025-08-04T14:47:07.568+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-02T00:00:00+00:00/task_id=load_to_s3 permission to 509
+[2025-08-04T14:47:07.596+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.load_to_s3 scheduled__2025-08-02T00:00:00+00:00 [running]> on host 9edf237adf6e
+[2025-08-04T14:47:09.113+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='load_to_s3' AIRFLOW_CTX_EXECUTION_DATE='2025-08-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-02T00:00:00+00:00'
+[2025-08-04T14:47:28.109+0000] {cdr.py:155} INFO - Uploaded 100 records to s3://cdr-faker-data-dfad0cb7/cdr_2025-08-04.parquet/
+[2025-08-04T14:47:28.127+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-08-04T14:47:28.175+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=cdr_pipeline, task_id=load_to_s3, execution_date=20250802T000000, start_date=20250804T144705, end_date=20250804T144728
+[2025-08-04T14:47:28.629+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-08-04T14:47:29.079+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-04T16:29:46.756+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-02T00:00:00+00:00/task_id=load_to_s3 permission to 509
+[2025-08-04T16:29:46.942+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-02T00:00:00+00:00/task_id=load_to_s3 permission to 509
+[2025-08-04T16:29:47.142+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_s3 scheduled__2025-08-02T00:00:00+00:00 [queued]>
+[2025-08-04T16:29:47.179+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_s3 scheduled__2025-08-02T00:00:00+00:00 [queued]>
+[2025-08-04T16:29:47.183+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2025-08-04T16:29:47.327+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): load_to_s3> on 2025-08-02 00:00:00+00:00
+[2025-08-04T16:29:47.681+0000] {standard_task_runner.py:60} INFO - Started process 2176 to run task
+[2025-08-04T16:29:47.916+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'load_to_s3', 'scheduled__2025-08-02T00:00:00+00:00', '--job-id', '81', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpr_03aqsi']
+[2025-08-04T16:29:47.961+0000] {standard_task_runner.py:88} INFO - Job 81: Subtask load_to_s3
+[2025-08-04T16:29:48.636+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=scheduled__2025-08-02T00:00:00+00:00/task_id=load_to_s3 permission to 509
+[2025-08-04T16:29:48.714+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.load_to_s3 scheduled__2025-08-02T00:00:00+00:00 [running]> on host 9edf237adf6e
+[2025-08-04T16:29:49.435+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='load_to_s3' AIRFLOW_CTX_EXECUTION_DATE='2025-08-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-02T00:00:00+00:00'
+[2025-08-04T16:29:49.450+0000] {cdr.py:44} INFO - Loading 291 records to s3://cdr-faker-data-dfad0cb7
+[2025-08-04T16:29:54.273+0000] {cdr.py:150} INFO - Uploaded 291 records to s3://cdr-faker-data-dfad0cb7/cdr_2025-08-04.parquet/
+[2025-08-04T16:29:54.280+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-08-04T16:29:54.339+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=cdr_pipeline, task_id=load_to_s3, execution_date=20250802T000000, start_date=20250804T162947, end_date=20250804T162954
+[2025-08-04T16:29:54.732+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-08-04T16:29:54.957+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

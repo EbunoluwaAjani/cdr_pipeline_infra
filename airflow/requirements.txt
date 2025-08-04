@@ -1,0 +1,3 @@
+awswrangler==3.10.0
+Faker
+PyMySQL

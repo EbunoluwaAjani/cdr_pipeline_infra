@@ -1,0 +1,122 @@
+[2025-08-02T18:22:23.536+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=manual__2025-08-02T04:05:53.026388+00:00/task_id=load_to_redshift permission to 509
+[2025-08-02T18:22:23.615+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=manual__2025-08-02T04:05:53.026388+00:00/task_id=load_to_redshift permission to 509
+[2025-08-02T18:22:23.670+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_redshift manual__2025-08-02T04:05:53.026388+00:00 [queued]>
+[2025-08-02T18:22:23.689+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: cdr_pipeline.load_to_redshift manual__2025-08-02T04:05:53.026388+00:00 [queued]>
+[2025-08-02T18:22:23.690+0000] {taskinstance.py:2170} INFO - Starting attempt 19 of 20
+[2025-08-02T18:22:23.718+0000] {taskinstance.py:2191} INFO - Executing <Task(S3ToRedshiftOperator): load_to_redshift> on 2025-08-02 04:05:53.026388+00:00
+[2025-08-02T18:22:23.737+0000] {standard_task_runner.py:60} INFO - Started process 508 to run task
+[2025-08-02T18:22:23.745+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'cdr_pipeline', 'load_to_redshift', 'manual__2025-08-02T04:05:53.026388+00:00', '--job-id', '183', '--raw', '--subdir', 'DAGS_FOLDER/dag.py', '--cfg-path', '/tmp/tmpzebaxm_a']
+[2025-08-02T18:22:23.748+0000] {standard_task_runner.py:88} INFO - Job 183: Subtask load_to_redshift
+[2025-08-02T18:22:23.851+0000] {logging_mixin.py:188} INFO - Changing /opt/***/logs/dag_id=cdr_pipeline/run_id=manual__2025-08-02T04:05:53.026388+00:00/task_id=load_to_redshift permission to 509
+[2025-08-02T18:22:23.872+0000] {task_command.py:423} INFO - Running <TaskInstance: cdr_pipeline.load_to_redshift manual__2025-08-02T04:05:53.026388+00:00 [running]> on host 2f861e5e7e42
+[2025-08-02T18:22:24.062+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='cdr_pipeline' AIRFLOW_CTX_TASK_ID='load_to_redshift' AIRFLOW_CTX_EXECUTION_DATE='2025-08-02T04:05:53.026388+00:00' AIRFLOW_CTX_TRY_NUMBER='19' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-02T04:05:53.026388+00:00'
+[2025-08-02T18:22:24.080+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-02T18:22:24.097+0000] {base.py:83} INFO - Using connection ID 'aws_default' for task execution.
+[2025-08-02T18:22:24.099+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') credentials retrieved from login and password.
+[2025-08-02T18:22:24.123+0000] {s3_to_redshift.py:192} INFO - Executing COPY command...
+[2025-08-02T18:22:24.144+0000] {base.py:83} INFO - Using connection ID 'redshift_default' for task execution.
+[2025-08-02T18:22:24.148+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='redshift_default', conn_type='aws') credentials retrieved from login and password.
+[2025-08-02T18:22:24.150+0000] {warnings.py:109} WARNING - <string>:9: AirflowProviderDeprecationWarning: Host tf-redshift-cluster.ci896s3qzt6h.eu-west-1.redshift.amazonaws.com:5439/dev_db specified in the connection is not used. Please, set it on extra['endpoint_url'] instead
+
+[2025-08-02T18:22:26.429+0000] {redshift_data.py:113} INFO - Polling statement 6d751f0c-8ef0-40ff-bc33-d8c5f3a04bd4
+[2025-08-02T18:22:26.616+0000] {redshift_data.py:129} INFO - Query STARTED
+[2025-08-02T18:22:36.620+0000] {redshift_data.py:113} INFO - Polling statement 6d751f0c-8ef0-40ff-bc33-d8c5f3a04bd4
+[2025-08-02T18:22:36.864+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/transfers/s3_to_redshift.py", line 194, in execute
+    redshift_hook.execute_query(sql=sql, **self.redshift_data_api_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/redshift_data.py", line 107, in execute_query
+    self.wait_for_results(statement_id, poll_interval=poll_interval)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/hooks/redshift_data.py", line 124, in wait_for_results
+    raise ValueError(
+ValueError: Statement '6d751f0c-8ef0-40ff-bc33-d8c5f3a04bd4' terminated with status FAILED. Response details: {'ClusterIdentifier': 'tf-redshift-cluster',
+ 'CreatedAt': datetime.datetime(2025, 8, 2, 18, 22, 26, 240000, tzinfo=tzlocal()),
+ 'Database': 'dev_db',
+ 'DbUser': 'masterdb',
+ 'Duration': -1,
+ 'Error': 'ERROR: Spectrum Scan Error\n'
+          '  Detail: \n'
+          '  -----------------------------------------------\n'
+          '  error:  Spectrum Scan Error\n'
+          '  code:      15007\n'
+          '  context:   File '
+          "'https://s3.eu-west-1.amazonaws.com/cdr-faker-data-dfad0cb7/cdr_2025-08-02.parquet/fffe8836d5654693b3ba8d195b3367b0.snappy.parquet' "
+          'has an incompatible Parquet schema for column '
+          "'s3://cdr-faker-data-dfad0cb7/cdr_2025-08-02.parquet/.call_quality'. "
+          'Colu\n'
+          '  query:     3787\n'
+          '  location:  dory_util.cpp:1776\n'
+          '  process:   worker_thread [pid=13511]\n'
+          '  -----------------------------------------------\n',
+ 'HasResultSet': False,
+ 'Id': '6d751f0c-8ef0-40ff-bc33-d8c5f3a04bd4',
+ 'QueryString': '\n'
+                '                    COPY public.cdr_records \n'
+                '                    FROM '
+                "'s3://cdr-faker-data-dfad0cb7/cdr_2025-08-02.parquet/'\n"
+                '                    credentials\n'
+                "                    ''\n"
+                '                    \n'
+                '                    FORMAT AS PARQUET;\n'
+                '        ',
+ 'RedshiftPid': 1073938852,
+ 'RedshiftQueryId': 3788,
+ 'ResponseMetadata': {'HTTPHeaders': {'content-length': '1179',
+                                      'content-type': 'application/x-amz-json-1.1',
+                                      'date': 'Sat, 02 Aug 2025 18:22:36 GMT',
+                                      'x-amzn-requestid': '9d1a91ff-45be-4f35-b352-33b8844465bf'},
+                      'HTTPStatusCode': 200,
+                      'RequestId': '9d1a91ff-45be-4f35-b352-33b8844465bf',
+                      'RetryAttempts': 0},
+ 'ResultRows': -1,
+ 'ResultSize': -1,
+ 'Status': 'FAILED',
+ 'UpdatedAt': datetime.datetime(2025, 8, 2, 18, 22, 27, 185000, tzinfo=tzlocal())}
+[2025-08-02T18:22:36.900+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=cdr_pipeline, task_id=load_to_redshift, execution_date=20250802T040553, start_date=20250802T182223, end_date=20250802T182236
+[2025-08-02T18:22:36.957+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 183 for task load_to_redshift (Statement '6d751f0c-8ef0-40ff-bc33-d8c5f3a04bd4' terminated with status FAILED. Response details: {'ClusterIdentifier': 'tf-redshift-cluster',
+ 'CreatedAt': datetime.datetime(2025, 8, 2, 18, 22, 26, 240000, tzinfo=tzlocal()),
+ 'Database': 'dev_db',
+ 'DbUser': 'masterdb',
+ 'Duration': -1,
+ 'Error': 'ERROR: Spectrum Scan Error\n'
+          '  Detail: \n'
+          '  -----------------------------------------------\n'
+          '  error:  Spectrum Scan Error\n'
+          '  code:      15007\n'
+          '  context:   File '
+          "'https://s3.eu-west-1.amazonaws.com/cdr-faker-data-dfad0cb7/cdr_2025-08-02.parquet/fffe8836d5654693b3ba8d195b3367b0.snappy.parquet' "
+          'has an incompatible Parquet schema for column '
+          "'s3://cdr-faker-data-dfad0cb7/cdr_2025-08-02.parquet/.call_quality'. "
+          'Colu\n'
+          '  query:     3787\n'
+          '  location:  dory_util.cpp:1776\n'
+          '  process:   worker_thread [pid=13511]\n'
+          '  -----------------------------------------------\n',
+ 'HasResultSet': False,
+ 'Id': '6d751f0c-8ef0-40ff-bc33-d8c5f3a04bd4',
+ 'QueryString': '\n'
+                '                    COPY public.cdr_records \n'
+                '                    FROM '
+                "'s3://cdr-faker-data-dfad0cb7/cdr_2025-08-02.parquet/'\n"
+                '                    credentials\n'
+                "                    ''\n"
+                '                    \n'
+                '                    FORMAT AS PARQUET;\n'
+                '        ',
+ 'RedshiftPid': 1073938852,
+ 'RedshiftQueryId': 3788,
+ 'ResponseMetadata': {'HTTPHeaders': {'content-length': '1179',
+                                      'content-type': 'application/x-amz-json-1.1',
+                                      'date': 'Sat, 02 Aug 2025 18:22:36 GMT',
+                                      'x-amzn-requestid': '9d1a91ff-45be-4f35-b352-33b8844465bf'},
+                      'HTTPStatusCode': 200,
+                      'RequestId': '9d1a91ff-45be-4f35-b352-33b8844465bf',
+                      'RetryAttempts': 0},
+ 'ResultRows': -1,
+ 'ResultSize': -1,
+ 'Status': 'FAILED',
+ 'UpdatedAt': datetime.datetime(2025, 8, 2, 18, 22, 27, 185000, tzinfo=tzlocal())}; 508)
+[2025-08-02T18:22:37.020+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-08-02T18:22:37.048+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,1 @@
+[2025-08-02T17:43:39.412+0000] {scheduler_job_runner.py:781} ERROR - Executor reports task instance <TaskInstance: cdr_pipeline.load_to_s3 manual__2025-08-02T04:05:53.026388+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?
