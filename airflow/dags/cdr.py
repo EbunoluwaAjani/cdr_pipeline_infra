@@ -40,7 +40,7 @@ def load_to_s3(s3_path, num_records=None):
         num_records (int): The number of synthetic records to generate.
     """
     if num_records is None:
-        num_records = random.randint(100, 500)
+        num_records = random.randint(500000, 1000000)
     logging.info(f"Loading {num_records} records to {s3_path}")
 
     call_types = ["voice", "sms", "data"]
